@@ -1,0 +1,57 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/LexendDeca-VariableFont_wght.ttf",
+      "sha1": "834220650f899ff0a288ab1c5d8ce5ee9a93b23b"
+    },
+    {
+      "path": "assets/fonts/README.txt",
+      "sha1": "d7c51881540d67291577d55a8a6628fddb738d55"
+    },
+    {
+      "path": "assets/fonts/static/LexendDeca-Bold.ttf",
+      "sha1": "e104ea217520eac2deafd9e17a7142bc3d34a994"
+    },
+    {
+      "path": "assets/fonts/static/LexendDeca-ExtraLight.ttf",
+      "sha1": "f501b405215c7225abbc19a5487e32f76cdaf236"
+    },
+    {
+      "path": "assets/fonts/static/LexendDeca-Thin.ttf",
+      "sha1": "3b4274260dfe28c44f4cb94efbdb4d8917d28752"
+    },
+    {
+      "path": "assets/fonts/static/LexendDeca-Black.ttf",
+      "sha1": "a86262a5c1f7d14134fb4ff839b0131a94b444ea"
+    },
+    {
+      "path": "assets/fonts/static/LexendDeca-Regular.ttf",
+      "sha1": "6f49970e1777a4f736e745311df319a58c5cf144"
+    },
+    {
+      "path": "assets/fonts/static/LexendDeca-ExtraBold.ttf",
+      "sha1": "29303b202c7ec3f98bb0d556021ece3fc341c97b"
+    },
+    {
+      "path": "assets/fonts/static/LexendDeca-Light.ttf",
+      "sha1": "1d53f9c26202a2197d037021a0613fd70f1bc24b"
+    },
+    {
+      "path": "assets/fonts/static/LexendDeca-Medium.ttf",
+      "sha1": "99aabd50ff0527c066a3c64b253b2ddeec643f8f"
+    },
+    {
+      "path": "assets/fonts/static/LexendDeca-SemiBold.ttf",
+      "sha1": "60141a9b4161683af73e7c67820757207f2fc76d"
+    },
+    {
+      "path": "assets/fonts/OFL.txt",
+      "sha1": "90849ce07e303976e08b807a29ac1f808a47afd5"
+    },
+    {
+      "path": "assets/fonts/Lexend_Deca.zip",
+      "sha1": "8ba2fe4be543e24ab922314852852ba35707441c"
+    }
+  ]
+}

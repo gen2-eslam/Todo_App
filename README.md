@@ -95,3 +95,7 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+https://www.figma.com/design/F2vVUUqvnHHzg3xr1MkkX8/Task-management---to-do-list-app--Community-?node-id=101-108&t=nxu22kBQPPLKrBLS-0
+
+https://www.svgviewer.dev/svg-to-react-native-jsx
