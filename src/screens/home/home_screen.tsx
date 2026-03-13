@@ -8,7 +8,8 @@ import { Colors } from "../../utils/colors";
 import { responsiveFontSize } from "../../utils/helper/responsive_text";
 import { useNavigation } from "@react-navigation/native";
 import { ListItemCard } from "./componant/list_item_card";
-
+import { FAB } from "@rneui/base";
+import AddIcon from "../../componant/add_icon";
 const HomeScreen = () =>{
 
     const [tasks,setTasks] = useState<TaskListModel[]>([]);
@@ -17,17 +18,16 @@ useEffect(() => {
     setTasks(fakeTaskLists);
 },[])
     return(
-        <SafeAreaView >
+        <SafeAreaView style={{flex: 1}} >
 
-          <ImageBackground source={require('../../../assets/images/backgrond.png')} style={{height: "100%"}}>
+          <ImageBackground source={require('../../../assets/images/backgrond.png')} >
            <View style = {{flexDirection:"row" ,margin: "5%", alignItems: 'baseline'}}>
              <Text style={{fontSize: responsiveFontSize(24), fontWeight: 'bold', color: Colors.black , paddingRight: 10}}> Tasks Group</Text>
            <Text style={{fontSize: responsiveFontSize(14), fontWeight: '700', color: Colors.primary}}> {tasks.length}</Text>
            </View>
-           <View style={{height: "80%"}}>
-
             <FlatList
             data={tasks}
+           
             renderItem={({item}) =>{
                 return(
                    <TouchableOpacity onPress={() => {
@@ -41,8 +41,9 @@ useEffect(() => {
             }}
             
             keyExtractor={(item) => item.id}
+            contentContainerStyle={{paddingBottom: 50}}
             /> 
-           </View>
+           
  
           </ImageBackground>
             </SafeAreaView>

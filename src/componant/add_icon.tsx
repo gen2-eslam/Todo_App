@@ -14,6 +14,7 @@ const AddIcon = (props: SvgProps) => (
       strokeWidth={3}
       strokeLinecap="round"
       strokeLinejoin="round"
+      fill={props.color}
     />
     <Path
       d="M12 18V6"
@@ -21,6 +22,8 @@ const AddIcon = (props: SvgProps) => (
       strokeWidth={3}
       strokeLinecap="round"
       strokeLinejoin="round"
+            fill={props.color}
+
     />
   </Svg>
 );
