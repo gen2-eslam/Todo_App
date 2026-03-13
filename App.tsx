@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import OnBoardingScreen from './src/screens/onboarding_screen';
 import MyTabs from './src/screens/(tabs)/tabs';
+import TaskScreen from './src/screens/task_screen/task_screen';
 const RootStack = createNativeStackNavigator({
   initialRouteName:"tabs",
   screens: {
@@ -18,6 +19,12 @@ const RootStack = createNativeStackNavigator({
     tabs:{
       screen: MyTabs,
         options: {
+        headerShown: false,
+      },
+    },
+    taskScreen:{
+      screen: TaskScreen,
+      options: {
         headerShown: false,
       },
     }

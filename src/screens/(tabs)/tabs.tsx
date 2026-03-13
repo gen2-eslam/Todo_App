@@ -8,7 +8,7 @@ import { Colors } from '../../utils/colors';
 import { FontFamilyManager } from '../../utils/font_family_manager';
 import HomeIcon from '../../componant/home_icon';
 import SettingIcon from '../../componant/setting_icon';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import AddIcon from '../../componant/add_icon';
 const Tab = createBottomTabNavigator(); 
 
@@ -16,9 +16,7 @@ const Tab = createBottomTabNavigator();
   const CustomTabBarButton = ({
     children,
     onPress,
-    accessibilityState,
   }: BottomTabBarButtonProps) => {
-    const focused = accessibilityState?.selected;
 
     return (
       <TouchableOpacity
@@ -31,6 +29,8 @@ const Tab = createBottomTabNavigator();
             styles.tabButtonInner,
           ]}
         >
+          
+          
           {children}
         </View>
       </TouchableOpacity>
@@ -81,7 +81,7 @@ const MyTabs = ()=>{
         <Tab.Screen name="Home"
         component={HomeScreen}
         options={{
-                       tabBarLabel: 'Home',
+            tabBarLabel: 'Home',
 
 
           }}  
@@ -91,7 +91,7 @@ const MyTabs = ()=>{
         <Tab.Screen name="Setting"
         component={SettingScreen}
         options={{
-                     tabBarLabel: 'Setting',
+            tabBarLabel: 'Setting',
 
           }}
         
