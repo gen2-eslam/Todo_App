@@ -51,12 +51,10 @@ const MyTabs = ()=>{
             tabBarButton: (props) => (
               <FAB
                          icon={<AddIcon color={Colors.background} />}
-                         placement="right"
                          color={Colors.primary}
                          
                          style={{position: 'absolute',
-                        right: 20,
-                        left: 20,
+                        alignSelf: 'center',
                         bottom: 5,
                          }}
                          onPress={() => navigation.navigate('taskScreen')}
