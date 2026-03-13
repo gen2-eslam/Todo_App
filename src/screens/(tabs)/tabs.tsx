@@ -1,9 +1,10 @@
 
 
 import { BottomTabBarButtonProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import HomeScreen from '../home/home_screen';
 import SettingScreen from '../setting/setting_screen';
+import TaskScreen from '../task_screen/task_screen';
 import { Colors } from '../../utils/colors';
 import { FontFamilyManager } from '../../utils/font_family_manager';
 import HomeIcon from '../../componant/home_icon';
@@ -16,6 +17,7 @@ const Tab = createBottomTabNavigator();
 
 
 const MyTabs = ()=>{
+  const navigation = useNavigation<any>();
   return (
       <Tab.Navigator
       screenOptions={{
@@ -44,7 +46,7 @@ const MyTabs = ()=>{
         
         />
          <Tab.Screen name="Add"
-        component={HomeScreen}
+        component={TaskScreen}
         options={{
             tabBarButton: (props) => (
               <FAB

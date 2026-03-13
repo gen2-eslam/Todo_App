@@ -8,8 +8,7 @@ import { Colors } from "../../utils/colors";
 import { responsiveFontSize } from "../../utils/helper/responsive_text";
 import { useNavigation } from "@react-navigation/native";
 import { ListItemCard } from "./componant/list_item_card";
-import { FAB } from "@rneui/base";
-import AddIcon from "../../componant/add_icon";
+
 const HomeScreen = () =>{
 
     const [tasks,setTasks] = useState<TaskListModel[]>([]);
