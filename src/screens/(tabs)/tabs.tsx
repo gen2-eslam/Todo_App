@@ -1,5 +1,3 @@
-
-
 import { BottomTabBarButtonProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import HomeScreen from '../home/home_screen';
@@ -12,76 +10,63 @@ import SettingIcon from '../../componant/setting_icon';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import AddIcon from '../../componant/add_icon';
 import { FAB } from '@rneui/base';
-const Tab = createBottomTabNavigator(); 
+const Tab = createBottomTabNavigator();
 
-
-
-const MyTabs = ()=>{
+const MyTabs = () => {
   const navigation = useNavigation<any>();
   return (
-      <Tab.Navigator
+    <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: Colors.primary,
         tabBarInactiveTintColor: Colors.secondary,
         tabBarStyle: {
-            backgroundColor: Colors.tabBar,
-        
-            
-          
-            borderTopWidth: 0,
-            elevation: 0,
-            shadowOpacity: 0,
-        }
+          backgroundColor: Colors.tabBar,
+
+          borderTopWidth: 0,
+          elevation: 0,
+          shadowOpacity: 0,
+        },
       }}
-      >
-        <Tab.Screen name="Home"
+    >
+      <Tab.Screen
+        name="Home"
         component={HomeScreen}
         options={{
-            tabBarLabel: 'Home',
-            tabBarIcon: ({focused}) => (
-                <HomeIcon color={focused ? Colors.primary : Colors.secondary} />
-            ),
-          }}  
-        
-        />
-         <Tab.Screen name="Add"
-        component={TaskScreen}
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ focused }) => (
+            <HomeIcon color={focused ? Colors.primary : Colors.secondary} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Add"
+        component={HomeScreen}
         options={{
-            tabBarButton: (props) => (
-              <FAB
-                         icon={<AddIcon color={Colors.background} />}
-                         color={Colors.primary}
-                         
-                         style={{position: 'absolute',
-                        alignSelf: 'center',
-                        bottom: 5,
-                         }}
-                         onPress={() => navigation.navigate('taskScreen')}
-                         />
-            ),
-         
-          }}  
-        
-        />
-     
-        <Tab.Screen name="Setting"
+          tabBarButton: (props) => (
+            <FAB
+              icon={<AddIcon color={Colors.background} />}
+              color={Colors.primary}
+              style={{ position: 'absolute', alignSelf: 'center', bottom: 5 }}
+              onPress={() => navigation.navigate('taskScreen')}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Setting"
         component={SettingScreen}
         options={{
-            tabBarLabel: 'Setting',
-     
-            tabBarIcon: ({focused}) => (
-                <SettingIcon color={focused ? Colors.primary : Colors.secondary} />
-            ),
-          }}
-        
-        />
-      </Tab.Navigator>
-     
+          tabBarLabel: 'Setting',
+
+          tabBarIcon: ({ focused }) => (
+            <SettingIcon color={focused ? Colors.primary : Colors.secondary} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
-}
+};
 
 export default MyTabs;
-
-
-

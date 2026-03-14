@@ -4,7 +4,8 @@ export const Colors = {
     black:"#24252C",
     tabBar:"#EEE9FF",
     white: "#CCCCCC",
-    background: "#FFFFFF"
+    background: "#FFFFFF",
+    pink: "#F478B8"
 }
 //EEE9FF
 
