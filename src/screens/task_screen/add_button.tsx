@@ -1,14 +1,12 @@
-import { Colors } from "../../utils/colors";
-import { useState } from "react";
-import { Pressable, Text } from "react-native";
-export const AddButton = () => {
-  const handleAdd = () => {
-    console.log('Add');
-  };
+import { Colors } from '../../utils/colors';
+import { useState } from 'react';
+import { Pressable, Text } from 'react-native';
+
+export const AddButton = ({ onPress }: { onPress: () => void }) => {
   const [isRight, setIsRight] = useState(true);
   return (
     <Pressable
-      onPress={handleAdd}
+      onPress={onPress}
       onLongPress={() => setIsRight(!isRight)}
       style={{
         position: 'absolute',

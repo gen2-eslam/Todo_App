@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
   listItem: {
     paddingVertical: 10,
     paddingHorizontal: 20,
-    margin: 10,
     justifyContent: 'space-between',
     flexDirection: 'row',
     borderRadius: 25,

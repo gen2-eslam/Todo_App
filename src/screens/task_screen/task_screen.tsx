@@ -6,7 +6,11 @@ import { responsiveFontSize } from '../../utils/helper/responsive_text';
 import TaskItem from './task_item';
 import { AddButton } from './add_button';
 import HeaderSection from './header_section';
+import TaskModel from '../../types/model/task_model';
+import AddTaskButtomSheet from './add_task_dialog';
+import { useState } from 'react';
 const TaskScreen = ({ route }: { route: any }) => {
+  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
   const task: TaskListModel = route.params.task;
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -15,11 +19,17 @@ const TaskScreen = ({ route }: { route: any }) => {
         <View style={styles.taskContainer}>
           <FlatList
             data={task.tasks}
-            renderItem={({ item }) => <TaskItem task={item} />}
+            renderItem={({ item }: { item: TaskModel }) => <TaskItem task={item} />}
+            ListEmptyComponent={
+              <View style={styles.emptyContainer}>
+                <Text style={styles.emptyText}>No tasks found</Text>
+              </View>
+            }
             keyExtractor={(item) => item.id.toString()}
             contentContainerStyle={{ gap: 10 }}
           />
-          <AddButton />
+          <AddTaskButtomSheet isVisible={isOverlayVisible} setIsVisible={setIsOverlayVisible} />
+          <AddButton onPress={() => setIsOverlayVisible(true)} />
         </View>
       </ImageBackground>
     </SafeAreaView>
@@ -42,5 +52,13 @@ const styles = StyleSheet.create({
     padding: '5%',
     borderRadius: 20,
   },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptyText: {
+    fontSize: responsiveFontSize(16),
+    color: Colors.black,
+  },
 });
-

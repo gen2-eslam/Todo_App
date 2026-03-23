@@ -8,6 +8,7 @@
     "lint": "eslint .",
     "assets": "npx react-native-asset",
     "start": "react-native start",
+    "mix": "react-native run-android & react-native start",
     "test": "jest"
   },
   "dependencies": {
@@ -29,10 +30,13 @@
     "react-native-circular-progress": "^1.4.1",
     "react-native-feather": "^1.1.2",
     "react-native-gesture-handler": "^2.30.0",
+    "react-native-paper-dates": "^0.23.5",
     "react-native-safe-area-context": "^5.7.0",
     "react-native-screens": "^4.24.0",
+    "react-native-snackbar": "^3.0.1",
     "react-native-svg": "^15.15.3",
-    "react-native-uuid": "^2.0.3"
+    "react-native-uuid": "^2.0.3",
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

@@ -7,13 +7,14 @@ import { Colors } from '../../utils/colors';
 import { FontFamilyManager } from '../../utils/font_family_manager';
 import HomeIcon from '../../componant/home_icon';
 import SettingIcon from '../../componant/setting_icon';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import AddIcon from '../../componant/add_icon';
-import { FAB } from '@rneui/base';
+import { FAB, Overlay, Button } from '@rneui/base';
+import AddTaskListScreen, { TaskForm } from '../home/componant/add_task_list_Dialog';
+import { useState } from 'react';
 const Tab = createBottomTabNavigator();
 
 const MyTabs = () => {
-  const navigation = useNavigation<any>();
   return (
     <Tab.Navigator
       screenOptions={{
@@ -22,10 +23,6 @@ const MyTabs = () => {
         tabBarInactiveTintColor: Colors.secondary,
         tabBarStyle: {
           backgroundColor: Colors.tabBar,
-
-          borderTopWidth: 0,
-          elevation: 0,
-          shadowOpacity: 0,
         },
       }}
     >
@@ -36,20 +33,6 @@ const MyTabs = () => {
           tabBarLabel: 'Home',
           tabBarIcon: ({ focused }) => (
             <HomeIcon color={focused ? Colors.primary : Colors.secondary} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Add"
-        component={HomeScreen}
-        options={{
-          tabBarButton: (props) => (
-            <FAB
-              icon={<AddIcon color={Colors.background} />}
-              color={Colors.primary}
-              style={{ position: 'absolute', alignSelf: 'center', bottom: 5 }}
-              onPress={() => navigation.navigate('taskScreen')}
-            />
           ),
         }}
       />
