@@ -5,6 +5,9 @@ import TaskListMapper from '../types/mapper/task_list_mapper';
 import TaskListModel from '../types/model/task_list_model';
 import CreateTaskEntity from '../types/entity/create_task_entity';
 import { CreateTaskListRequest } from '../types/model/create_task_list_request';
+import { CreateTaskModel } from '../types/model/create_task_model';
+import TaskModel from '../types/model/task_model';
+import TaskConverter from '../types/mapper/task_converter';
 
 export const fetchTaskList = createAsyncThunk<TaskListEntity[], void, { rejectValue: string }>(
   'taskList/fetchTaskList',
@@ -17,7 +20,6 @@ export const fetchTaskList = createAsyncThunk<TaskListEntity[], void, { rejectVa
     }
   },
 );
-
 
 const initialState = {
   taskLists: [] as TaskListEntity[],
@@ -43,9 +45,32 @@ const taskListSlice = createSlice({
         state.taskLists[index] = action.payload;
       }
     },
+    addTaskToTaskList: (state, action: PayloadAction<{ taskListId: string; task: TaskModel }>) => {
+      const index = state.taskLists.findIndex(
+        (task) => task.id.toString() === action.payload.taskListId.toString(),
+      );
+      if (index !== -1) {
+        state.taskLists[index].tasks.push(TaskConverter.toEntity(action.payload.task));
+      }
+    },
     deleteTaskList: (state, action: PayloadAction<string>) => {
       state.taskLists = state.taskLists.filter((task) => task.id.toString() !== action.payload);
-      
+    },
+    updateTaskInTaskList: (
+      state,
+      action: PayloadAction<{ taskListId: string; task: TaskModel }>,
+    ) => {
+      const listIndex = state.taskLists.findIndex(
+        (list) => list.id.toString() === action.payload.taskListId.toString(),
+      );
+      if (listIndex !== -1) {
+        const taskIndex = state.taskLists[listIndex].tasks.findIndex(
+          (task) => task.id.toString() === action.payload.task.id.toString(),
+        );
+        if (taskIndex !== -1) {
+          state.taskLists[listIndex].tasks[taskIndex] = TaskConverter.toEntity(action.payload.task);
+        }
+      }
     },
   },
   extraReducers: (builder) => {
@@ -64,5 +89,12 @@ const taskListSlice = createSlice({
   },
 });
 
-export const { setTaskList, addTaskList, updateTaskList, deleteTaskList } = taskListSlice.actions;
+export const {
+  setTaskList,
+  addTaskList,
+  updateTaskList,
+  deleteTaskList,
+  addTaskToTaskList,
+  updateTaskInTaskList,
+} = taskListSlice.actions;
 export default taskListSlice.reducer;

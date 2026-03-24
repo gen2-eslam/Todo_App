@@ -3,7 +3,8 @@ import TaskListModel from '../../types/model/task_list_model';
 import { View, Text } from 'react-native';
 import { responsiveFontSize } from '../../utils/helper/responsive_text';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-const TaskInfoSection = ({ task }: { task: TaskListModel }) => {
+import TaskListEntity from '../../types/entity/task_list_entity';
+const TaskInfoSection = ({ task }: { task: TaskListEntity }) => {
   
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -12,7 +13,7 @@ const TaskInfoSection = ({ task }: { task: TaskListModel }) => {
     </View>
   );
 };
- const TaskProgress = ({ task }: { task: TaskListModel }) => (
+ const TaskProgress = ({ task }: { task: TaskListEntity }) => (
     <AnimatedCircularProgress
       size={50}
       width={5}
@@ -34,7 +35,7 @@ const TaskInfoSection = ({ task }: { task: TaskListModel }) => {
     </AnimatedCircularProgress>
   );
 
-const TaskTitleWithDescription = ({ task }: { task: TaskListModel }) => {
+const TaskTitleWithDescription = ({ task }: { task: TaskListEntity }) => {
   return (
     <View style={{ flex: 1 }}>
       <Text style={{ color: Colors.background, fontSize: responsiveFontSize(20) }}>

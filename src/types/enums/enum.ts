@@ -1,12 +1,12 @@
 enum Priority {
-    LOW = "LOW",
-    MEDIUM = "MEDIUM",
-    HIGH = "HIGH",
+  'LOW',
+  'MEDIUM',
+  'HIGH',
 }
 
 enum Status {
-    OPEN = "OPEN",
-    COMPLETED = "CLOSED",
+  OPEN = 'OPEN',
+  COMPLETED = 'CLOSED',
 }
 
-export {Priority, Status};
+export { Priority, Status };

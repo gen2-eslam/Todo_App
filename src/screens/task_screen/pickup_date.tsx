@@ -3,9 +3,14 @@ import { DatePickerModal } from 'react-native-paper-dates';
 import { Colors } from '../../utils/colors';
 import { useCallback, useState } from 'react';
 
-const PickupDate = () => {
+const PickupDate = ({
+  dueDate,
+  setDueDate,
+}: {
+  dueDate: Date | undefined;
+  setDueDate: (dueDate: Date | undefined) => void;
+}) => {
   const [open, setOpen] = useState(false);
-  const [date, setDate] = useState<Date | undefined>(new Date());
   const onDismissSingle = useCallback(() => {
     setOpen(false);
   }, [setOpen]);
@@ -13,25 +18,25 @@ const PickupDate = () => {
   const onConfirmSingle = useCallback(
     ({ date }: { date: Date | undefined }) => {
       setOpen(false);
-      setDate(date);
+      setDueDate(date);
     },
-    [setOpen, setDate],
+    [setOpen, setDueDate],
   );
   return (
     <>
       <Button
-        title="Pick Date"
+        title={dueDate ? dueDate.toLocaleDateString() : 'Pick Date'}
         type="outline"
         onPress={() => setOpen(true)}
         buttonStyle={{ borderRadius: 10, borderColor: Colors.primary }}
         titleStyle={{ color: Colors.primary }}
       />
       <DatePickerModal
-        locale="en"
+        locale="en-US"
         mode="single"
         visible={open}
         onDismiss={onDismissSingle}
-        date={date}
+        date={dueDate}
         onConfirm={onConfirmSingle}
       />
     </>

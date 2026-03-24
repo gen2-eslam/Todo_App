@@ -1,25 +1,38 @@
-import { Text, Pressable, View, ImageBackground, StyleSheet, FlatList } from 'react-native';
+import { Text, View, ImageBackground, StyleSheet, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from '../../utils/colors';
-import TaskListModel from '../../types/model/task_list_model';
 import { responsiveFontSize } from '../../utils/helper/responsive_text';
 import TaskItem from './task_item';
 import { AddButton } from './add_button';
 import HeaderSection from './header_section';
-import TaskModel from '../../types/model/task_model';
 import AddTaskButtomSheet from './add_task_dialog';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import TaskEntity from '../../types/entity/task_entity';
+
 const TaskScreen = ({ route }: { route: any }) => {
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-  const task: TaskListModel = route.params.task;
+  const taskListId: string = route.params.task.id;
+
+  const taskList = useSelector((state: RootState) =>
+    state.taskList.taskLists.find((tl) => tl.id.toString() === taskListId.toString()),
+  );
+
+  if (!taskList) {
+    return null;
+  }
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground source={require('../../../assets/images/backgrond.png')} style={{ flex: 1 }}>
-        <HeaderSection task={task} />
+        <HeaderSection task={taskList} />
         <View style={styles.taskContainer}>
           <FlatList
-            data={task.tasks}
-            renderItem={({ item }: { item: TaskModel }) => <TaskItem task={item} />}
+            data={taskList.tasks}
+            renderItem={({ item }: { item: TaskEntity }) => (
+              <TaskItem task={item} taskListId={taskList.id} />
+            )}
             ListEmptyComponent={
               <View style={styles.emptyContainer}>
                 <Text style={styles.emptyText}>No tasks found</Text>
@@ -28,7 +41,11 @@ const TaskScreen = ({ route }: { route: any }) => {
             keyExtractor={(item) => item.id.toString()}
             contentContainerStyle={{ gap: 10 }}
           />
-          <AddTaskButtomSheet isVisible={isOverlayVisible} setIsVisible={setIsOverlayVisible} />
+          <AddTaskButtomSheet
+            taskListId={taskList.id}
+            isVisible={isOverlayVisible}
+            setIsVisible={setIsOverlayVisible}
+          />
           <AddButton onPress={() => setIsOverlayVisible(true)} />
         </View>
       </ImageBackground>

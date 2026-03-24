@@ -4,16 +4,34 @@ import { View, Text, StyleSheet } from 'react-native';
 import { responsiveFontSize } from '../../utils/helper/responsive_text';
 import { Trash, Edit2 } from 'react-native-feather';
 import CustomCheckBox from './custom_checkbox';
-const TaskItem = ({ task }: { task: TaskModel }) => {
+import { Status } from '../../types/enums/enum';
+import TaskEntity from '../../types/entity/task_entity';
+import { useDispatch } from 'react-redux';
+import { updateTaskInTaskList } from '../../redux/slice';
+import TaskAxios from '../../axios/task_axios';
+import TaskConverter from '../../types/mapper/task_converter';
+const TaskItem = ({ task, taskListId }: { task: TaskEntity; taskListId: string }) => {
+  const dispatch = useDispatch();
+
+  const toggleTaskStatus = async () => {
+    const newStatus = task.status === Status.COMPLETED ? Status.OPEN : Status.COMPLETED;
+    const model = TaskConverter.toModel(task);
+    model.status = newStatus;
+
+    try {
+      const updatedTask = await TaskAxios.updateTask(model);
+      const taskToDispatch = updatedTask?.id ? updatedTask : model;
+      dispatch(updateTaskInTaskList({ taskListId, task: taskToDispatch }));
+    } catch (error) {
+      console.log('Error updating task status', error);
+    }
+  };
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.taskContainer}>
-        <Text style={styles.taskTitle}>
-          {task.title}
-        </Text>
-        <Text style={styles.taskDescription}>
-          {task.description}
-        </Text>
+        <Text style={styles.taskTitle}>{task.title}</Text>
+        <Text style={styles.taskDescription}>{task.description}</Text>
 
         <Text style={styles.taskPriority}>
           {task.priority} <Text style={styles.taskPriorityText}>Priority</Text>
@@ -22,8 +40,7 @@ const TaskItem = ({ task }: { task: TaskModel }) => {
       <View style={styles.actionContainer}>
         <Trash color="red" onPress={() => {}} />
         <Edit2 color="blue" onPress={() => {}} />
-
-        <CustomCheckBox isChecked={true} onPress={() => {}} />
+        <CustomCheckBox isChecked={task.status === Status.COMPLETED} onPress={toggleTaskStatus} />
       </View>
     </View>
   );

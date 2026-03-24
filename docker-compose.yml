@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-
   postgres:
     image: postgres:latest
     container_name: postgres2
@@ -10,7 +9,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - postgresql:/var/lib/postgresql
   spring_boot_app:
@@ -19,7 +18,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - "8080:8080"
+      - '8080:8080'
 
 volumes:
   postgresql:

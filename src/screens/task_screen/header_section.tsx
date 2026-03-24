@@ -10,7 +10,8 @@ import { useDispatch } from 'react-redux';
 import { deleteTaskList } from '../../redux/slice';
 import TaskListAxios from '../../axios/task_list_axios';
 import { Snackbar } from 'react-native-snackbar';
-const HeaderSection = ({ task }: { task: TaskListModel }) => {
+import TaskListEntity from '../../types/entity/task_list_entity';
+const HeaderSection = ({ task }: { task: TaskListEntity }) => {
   const deleteTask = async () => {
     try {
       const res = await TaskListAxios.deleteTaskList(task.id);

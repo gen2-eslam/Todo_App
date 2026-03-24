@@ -100,5 +100,4 @@ https://www.figma.com/design/F2vVUUqvnHHzg3xr1MkkX8/Task-management---to-do-list
 
 https://www.svgviewer.dev/svg-to-react-native-jsx
 
-
 sudo fuser -k 5432/tcp
